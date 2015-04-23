@@ -2,8 +2,8 @@ name: xiaotieba
 version: 1
 
 libraries:
-- name:"django"
-  version:"1.6"
+- name: "django"
+  version: "1.6"
 
 handlers:
 - url: /static

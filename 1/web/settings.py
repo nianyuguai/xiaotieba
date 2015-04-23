@@ -14,6 +14,28 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+import os.path
+import sae.const
+from os import environ
+debug = not environ.get("APP_NAME", "")
+if debug:
+#LOCAL 本地调试用，便于导出数据库,根据本地MYSQL数据库填写下面参数<----------------如果文件中出现中文，一定要在开始添加 #coding:utf-8
+    MYSQL_DB = 'pythondjangotest'
+    MYSQL_USER = 'root'
+    MYSQL_PASS = '123456'
+    MYSQL_HOST_M = '127.0.0.1'
+    MYSQL_HOST_S = '127.0.0.1'
+    MYSQL_PORT = '3306'
+else:
+#SAE
+    import sae.const
+    MYSQL_DB = sae.const.MYSQL_DB
+    MYSQL_USER = sae.const.MYSQL_USER
+    MYSQL_PASS = sae.const.MYSQL_PASS
+    MYSQL_HOST_M = sae.const.MYSQL_HOST
+    MYSQL_HOST_S = sae.const.MYSQL_HOST_S
+    MYSQL_PORT = sae.const.MYSQL_PORT
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -60,11 +82,11 @@ WSGI_APPLICATION = 'web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': MYSQL_DB,
+        'USER': MYSQL_USER,
+        'PASSWORD': MYSQL_PASS,
+        'HOST': MYSQL_HOST_M,
+        'PORT': MYSQL_PORT,
     }
 }
 
@@ -86,15 +108,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 
 # 静态文件目录
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+# )
 
 # 模版文件目录
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "templates"),
-)
+# TEMPLATE_DIRS = (
+#     os.path.join(BASE_DIR, "templates"),
+# )
