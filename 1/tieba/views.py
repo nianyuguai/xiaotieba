@@ -6,7 +6,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import django
 
+from django.shortcuts import render_to_response
 
 def home(request):
 
-    return HttpResponse("Hello,  django! version: " + str(django.VERSION))
+    return render_to_response('index.html',)

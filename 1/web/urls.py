@@ -5,6 +5,8 @@ admin.autodiscover()
 
 
 
+
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'web.views.home', name='home'),
