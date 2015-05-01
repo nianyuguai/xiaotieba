@@ -8,8 +8,16 @@ from django.template.loader import get_template
 from django.template import RequestContext
 
 
-def home(request):
+def index(request):
 
+    c = RequestContext(request, {'foo': 'bar'})
+    t = get_template('index.html')
+    return HttpResponse(t.render(c))
+
+
+def login(request):
+
+    print "login..."
     c = RequestContext(request, {'foo': 'bar'})
     t = get_template('index.html')
     return HttpResponse(t.render(c))

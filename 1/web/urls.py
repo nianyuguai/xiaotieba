@@ -12,6 +12,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'tieba.views.home', name='home'),
+    url(r'^$', include('tieba.urls')),
 )
 urlpatterns += staticfiles_urlpatterns()
